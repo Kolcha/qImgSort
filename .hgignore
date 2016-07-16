@@ -1,0 +1,6 @@
+syntax: glob
+*.user
+*.qm
+*.orig
+desktop.ini
+.DS_Store
