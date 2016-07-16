@@ -20,12 +20,11 @@ int main(int argc, char *argv[])
   foreach (QString locale, ui_languages) {
     locale = QLocale(locale).name();
     if (app_translator.load(QLatin1String("qimgsort_") + locale, langs_path)) {
+      a.installTranslator(&app_translator);
       if (qt_translator.load(QLatin1String("qt_") + locale, langs_path)) {
-        a.installTranslator(&app_translator);
         a.installTranslator(&qt_translator);
-        break;
       }
-      app_translator.load(QString()); // unload()
+      break;
     } else if (locale == QLatin1String("C") /* overrideLanguage == "English" */) {
       // use built-in
       break;
@@ -33,10 +32,12 @@ int main(int argc, char *argv[])
       // use built-in
       break;
     } else if (locale.contains("ua", Qt::CaseInsensitive)) /* Ukrainian, use russian */ {
-      app_translator.load(QLatin1String("qimgsort_ru"), langs_path);
-      qt_translator.load(QLatin1String("qt_ru"), langs_path);
-      a.installTranslator(&app_translator);
-      a.installTranslator(&qt_translator);
+      if (app_translator.load(QLatin1String("qimgsort_ru"), langs_path)) {
+        a.installTranslator(&app_translator);
+      }
+      if (qt_translator.load(QLatin1String("qt_ru"), langs_path)) {
+        a.installTranslator(&qt_translator);
+      }
       break;
     }
   }
