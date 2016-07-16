@@ -7,8 +7,8 @@
 int main(int argc, char *argv[])
 {
   QApplication a(argc, argv);
-  a.setApplicationName("ImgSort");
-  a.setApplicationVersion("2.0.3");
+  a.setApplicationName("qImgSort");
+  a.setApplicationVersion("2.1.0");
   a.setOrganizationName("Nick Korotysh");
   a.setOrganizationDomain("qimgsort.sourceforge.net");
 

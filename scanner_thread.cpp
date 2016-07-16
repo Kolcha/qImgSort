@@ -133,11 +133,15 @@ void ScannerThread::processFile(const QString& filename)
 
   QString dst_filename = dst_dir.absoluteFilePath(res_dir_name) + "/" + getFileName(filename).toString();
 
-  if (fix_extensions_ && !image_reader.format().isEmpty()) {
+  if (!image_reader.format().isEmpty()) {
     QString type_ext = getTypeExtension(image_reader.format());
     if (getExtension(dst_filename).toLower() != type_ext.toLower()) {
-      emit logMessage(f_err_.arg(tr("Incorrect extension detected:")) + " " + filename + " -> " + type_ext);
-      dst_filename = changeExtension(dst_filename, type_ext);
+      if (fix_extensions_) {
+        dst_filename = changeExtension(dst_filename, type_ext);
+        emit logMessage(f_info_.arg(tr("incorrect extension fixed:")) + " " + filename + " -> " + type_ext);
+      } else {
+        emit logMessage(f_err_.arg(tr("incorrect extension detected:")) + " " + filename + " -> " + type_ext);
+      }
     }
   }
 
