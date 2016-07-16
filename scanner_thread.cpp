@@ -69,6 +69,9 @@ void ScannerThread::scanPath(const QString& path)
       continue;
     }
   }
+
+  // only empty directory will removed
+  if (delete_processed_) cur_dir.rmdir(path);
 }
 
 void ScannerThread::processFile(const QString& filename)
