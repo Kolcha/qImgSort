@@ -24,23 +24,23 @@
         <translation>Удалять обработанные</translation>
     </message>
     <message>
-        <location filename="main_window.ui" line="74"/>
+        <location filename="main_window.ui" line="71"/>
         <source>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change file extension to correct if incorrect extension will detected.&lt;/p&gt;&lt;p&gt;Unsupported files will not changed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
         <translation>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Изменить расширение файла если будет замечено некорректное.&lt;/p&gt;&lt;p&gt;Неподдерживаемы файлы переименованы не будут.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</translation>
     </message>
     <message>
-        <location filename="main_window.ui" line="77"/>
+        <location filename="main_window.ui" line="74"/>
         <source>Fix extensions</source>
         <translation>Исправлять расширения</translation>
     </message>
     <message>
-        <location filename="main_window.ui" line="87"/>
+        <location filename="main_window.ui" line="84"/>
         <location filename="main_window.cpp" line="86"/>
         <source>GO!</source>
         <translation>Старт!</translation>
     </message>
     <message>
-        <location filename="main_window.ui" line="99"/>
+        <location filename="main_window.ui" line="96"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
@@ -74,34 +74,44 @@ p, li { white-space: pre-wrap; }
 <context>
     <name>ScannerThread</name>
     <message>
-        <location filename="scanner_thread.cpp" line="46"/>
+        <location filename="scanner_thread.cpp" line="50"/>
         <source>scan started:</source>
         <translation>сканирование начато:</translation>
     </message>
     <message>
-        <location filename="scanner_thread.cpp" line="55"/>
+        <location filename="scanner_thread.cpp" line="59"/>
         <source>scan cancelled</source>
         <translation>сканирование прервано</translation>
     </message>
     <message>
-        <location filename="scanner_thread.cpp" line="101"/>
-        <location filename="scanner_thread.cpp" line="116"/>
+        <location filename="scanner_thread.cpp" line="61"/>
+        <source>scan finished</source>
+        <translation>сканирование завершено</translation>
+    </message>
+    <message>
+        <location filename="scanner_thread.cpp" line="105"/>
+        <location filename="scanner_thread.cpp" line="120"/>
         <source>unsupported</source>
         <translation>неподдерживаемые</translation>
     </message>
     <message>
-        <location filename="scanner_thread.cpp" line="102"/>
-        <location filename="scanner_thread.cpp" line="117"/>
+        <location filename="scanner_thread.cpp" line="106"/>
+        <location filename="scanner_thread.cpp" line="121"/>
         <source>unsupported file:</source>
         <translation>неподдерживаемый файл:</translation>
     </message>
     <message>
-        <location filename="scanner_thread.cpp" line="142"/>
+        <location filename="scanner_thread.cpp" line="139"/>
+        <source>Incorrect extension detected:</source>
+        <translation>Некорректное расширение файла:</translation>
+    </message>
+    <message>
+        <location filename="scanner_thread.cpp" line="147"/>
         <source>file not moved:</source>
         <translation>ошибка при перемещении:</translation>
     </message>
     <message>
-        <location filename="scanner_thread.cpp" line="144"/>
+        <location filename="scanner_thread.cpp" line="149"/>
         <source>file not copied:</source>
         <translation>ошибка при копировании:</translation>
     </message>

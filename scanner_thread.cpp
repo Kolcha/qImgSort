@@ -14,6 +14,10 @@ ScannerThread::ScannerThread(QObject* parent) : QThread(parent)
   delete_processed_ = true;
   fix_extensions_ = true;
   stopped_ = false;
+
+  f_info_ = "<span style=\"color:#4169E1;\">%1</span>";
+  f_warn_ = "<span style=\"color:#BA55D3;\">%1</span>";
+  f_err_  = "<span style=\"color:#DC143C;\">%1</span>";
 }
 
 void ScannerThread::setSourceDir(const QString& path)
@@ -43,7 +47,7 @@ void ScannerThread::stop()
 
 void ScannerThread::run()
 {
-  emit logMessage(tr("scan started:") + " " + src_path_);
+  emit logMessage(f_info_.arg(tr("scan started:")) + " " + src_path_);
 
   stopped_ = false;
   st_.clear();
@@ -52,9 +56,9 @@ void ScannerThread::run()
   scanPath(src_path_);
 
   if (stopped_) {
-    emit logMessage(tr("scan cancelled"));
+    emit logMessage(f_warn_.arg(tr("scan cancelled")));
   } else {
-    emit logMessage("scan finished");
+    emit logMessage(f_info_.arg(tr("scan finished")));
   }
 }
 
@@ -99,7 +103,7 @@ void ScannerThread::processFile(const QString& filename)
 
   if (!image_reader.canRead()) {
     res_dir_name = tr("unsupported");
-    emit logMessage(tr("unsupported file:") + " " + filename);
+    emit logMessage(f_warn_.arg(tr("unsupported file:")) + " " + filename);
   } else {
     QSize img_res = image_reader.size();
     if (!img_res.isValid()) {
@@ -114,7 +118,7 @@ void ScannerThread::processFile(const QString& filename)
 
     if (img_res.isNull()) {
       res_dir_name = tr("unsupported");
-      emit logMessage(tr("unsupported file:") + " " + filename);
+      emit logMessage(f_warn_.arg(tr("unsupported file:")) + " " + filename);
     } else {
       ++st_.files_procesed;
       QString res_dir_mask("%1x%2");
@@ -129,9 +133,10 @@ void ScannerThread::processFile(const QString& filename)
 
   QString dst_filename = dst_dir.absoluteFilePath(res_dir_name) + "/" + getFileName(filename).toString();
 
-  if (fix_extensions_) {
+  if (fix_extensions_ && !image_reader.format().isEmpty()) {
     QString type_ext = getTypeExtension(image_reader.format());
     if (getExtension(dst_filename).toLower() != type_ext.toLower()) {
+      emit logMessage(f_err_.arg(tr("Incorrect extension detected:")) + " " + filename + " -> " + type_ext);
       dst_filename = changeExtension(dst_filename, type_ext);
     }
   }
@@ -139,9 +144,9 @@ void ScannerThread::processFile(const QString& filename)
   if (QFile::exists(dst_filename)) dst_filename = genCopyName(dst_filename);
 
   if (delete_processed_) {
-    if (!QFile::rename(filename, dst_filename)) emit logMessage(tr("file not moved:") + " " + filename);
+    if (!QFile::rename(filename, dst_filename)) emit logMessage(f_err_.arg(tr("file not moved:")) + " " + filename);
   } else {
-    if (!QFile::copy(filename, dst_filename)) emit logMessage(tr("file not copied:") + " " + filename);
+    if (!QFile::copy(filename, dst_filename)) emit logMessage(f_err_.arg(tr("file not copied:")) + " " + filename);
   }
 
   emit updateStat(st_);

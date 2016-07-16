@@ -53,6 +53,10 @@ private:
   volatile bool stopped_;
 
   ScanStat st_;
+
+  QString f_info_;
+  QString f_warn_;
+  QString f_err_;
 };
 
 #endif // SCANNER_THREAD_H
