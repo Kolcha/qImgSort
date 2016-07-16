@@ -9,6 +9,8 @@
 
 ScannerThread::ScannerThread(QObject* parent) : QThread(parent)
 {
+  qRegisterMetaType<ScanStat>("ScanStat");
+
   delete_processed_ = true;
   fix_extensions_ = true;
   stopped_ = false;
@@ -42,8 +44,13 @@ void ScannerThread::stop()
 void ScannerThread::run()
 {
   emit logMessage(tr("scan started:") + " " + src_path_);
+
   stopped_ = false;
+  st_.clear();
+  emit updateStat(st_);
+
   scanPath(src_path_);
+
   if (stopped_) {
     emit logMessage(tr("scan cancelled"));
   } else {
@@ -65,6 +72,7 @@ void ScannerThread::scanPath(const QString& path)
     }
 
     if (item.isFile()) {
+      ++st_.files_found;
       processFile(item.absoluteFilePath());
       continue;
     }
@@ -108,6 +116,7 @@ void ScannerThread::processFile(const QString& filename)
       res_dir_name = tr("unsupported");
       emit logMessage(tr("unsupported file:") + " " + filename);
     } else {
+      ++st_.files_procesed;
       QString res_dir_mask("%1x%2");
       res_dir_name = res_dir_mask.arg(img_res.width()).arg(img_res.height());
     }
@@ -134,4 +143,6 @@ void ScannerThread::processFile(const QString& filename)
   } else {
     if (!QFile::copy(filename, dst_filename)) emit logMessage(tr("file not copied:") + " " + filename);
   }
+
+  emit updateStat(st_);
 }

@@ -3,6 +3,8 @@
 
 #include <QMainWindow>
 
+#include "scanner_thread.h"
+
 namespace Ui {
 class MainWindow;
 }
@@ -23,6 +25,8 @@ private slots:
 
   void scan_started();
   void scan_finished();
+
+  void display_stat(const ScannerThread::ScanStat& st);
 
 private:
   Ui::MainWindow *ui;

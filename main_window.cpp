@@ -36,9 +36,11 @@ void MainWindow::start_scan()
 {
   ScannerThread* scan_thread = new ScannerThread;
   connect(scan_thread, &ScannerThread::started, this, &MainWindow::scan_started);
+  connect(scan_thread, &ScannerThread::started, ui->log_view, &QTextEdit::clear);
   connect(scan_thread, &ScannerThread::finished, this, &MainWindow::scan_finished);
   connect(scan_thread, &ScannerThread::finished, scan_thread, &ScannerThread::deleteLater);
   connect(scan_thread, &ScannerThread::logMessage, ui->log_view, &QTextEdit::append);
+  connect(scan_thread, &ScannerThread::updateStat, this, &MainWindow::display_stat);
 
   scan_thread->setSourceDir(QDir::fromNativeSeparators(ui->src_edit->text()));
   scan_thread->setTargetDir(QDir::fromNativeSeparators(ui->dst_edit->text()));
@@ -85,4 +87,11 @@ void MainWindow::scan_finished()
 
   disconnect(ui->start_stop_btn, &QPushButton::clicked, 0, 0);
   connect(ui->start_stop_btn, &QPushButton::clicked, this, &MainWindow::start_scan);
+}
+
+void MainWindow::display_stat(const ScannerThread::ScanStat& st)
+{
+  ui->statusbar->showMessage(tr("Files found: %1, processed: %2")
+                             .arg(st.files_found)
+                             .arg(st.files_procesed));
 }

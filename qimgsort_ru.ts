@@ -25,47 +25,52 @@
     </message>
     <message>
         <location filename="main_window.ui" line="81"/>
-        <location filename="main_window.cpp" line="84"/>
+        <location filename="main_window.cpp" line="86"/>
         <source>GO!</source>
         <translation>Старт!</translation>
     </message>
     <message>
-        <location filename="main_window.cpp" line="68"/>
+        <location filename="main_window.cpp" line="70"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
+    </message>
+    <message>
+        <location filename="main_window.cpp" line="94"/>
+        <source>Files found: %1, processed: %2</source>
+        <translation>Файлов найдено: %1, обработано: %2</translation>
     </message>
 </context>
 <context>
     <name>ScannerThread</name>
     <message>
-        <location filename="scanner_thread.cpp" line="44"/>
+        <location filename="scanner_thread.cpp" line="46"/>
         <source>scan started:</source>
         <translation>сканирование начато:</translation>
     </message>
     <message>
-        <location filename="scanner_thread.cpp" line="48"/>
+        <location filename="scanner_thread.cpp" line="55"/>
         <source>scan cancelled</source>
         <translation>сканирование прервано</translation>
     </message>
     <message>
-        <location filename="scanner_thread.cpp" line="90"/>
-        <location filename="scanner_thread.cpp" line="105"/>
+        <location filename="scanner_thread.cpp" line="101"/>
+        <location filename="scanner_thread.cpp" line="116"/>
         <source>unsupported</source>
         <translation>неподдерживаемые</translation>
     </message>
     <message>
-        <location filename="scanner_thread.cpp" line="91"/>
-        <location filename="scanner_thread.cpp" line="106"/>
+        <location filename="scanner_thread.cpp" line="102"/>
+        <location filename="scanner_thread.cpp" line="117"/>
         <source>unsupported file:</source>
         <translation>неподдерживаемый файл:</translation>
     </message>
     <message>
-        <location filename="scanner_thread.cpp" line="130"/>
+        <location filename="scanner_thread.cpp" line="142"/>
         <source>file not moved:</source>
         <translation>ошибка при перемещении:</translation>
     </message>
     <message>
-        <location filename="scanner_thread.cpp" line="132"/>
+        <location filename="scanner_thread.cpp" line="144"/>
         <source>file not copied:</source>
         <translation>ошибка при копировании:</translation>
     </message>
