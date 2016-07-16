@@ -24,6 +24,9 @@ HEADERS  += \
 FORMS    += \
     main_window.ui
 
+TRANSLATIONS += \
+    qimgsort_ru.ts
+
 win32:RC_FILE = qimgsort.rc
 macx {
     ICON = qimgsort.icns
