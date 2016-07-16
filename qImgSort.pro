@@ -23,3 +23,9 @@ HEADERS  += \
 
 FORMS    += \
     main_window.ui
+
+win32:RC_FILE = qimgsort.rc
+macx {
+    ICON = qimgsort.icns
+    QMAKE_INFO_PLIST = qimgsort.plist
+}

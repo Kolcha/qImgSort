@@ -1,8 +1,6 @@
 #include "main_window.h"
 #include <QApplication>
 
-// build 32
-
 int main(int argc, char *argv[])
 {
   QApplication a(argc, argv);
@@ -12,6 +10,7 @@ int main(int argc, char *argv[])
   a.setOrganizationDomain("qimgsort.sourceforge.net");
 
   MainWindow w;
+  w.setWindowTitle(QString("%1 %2").arg(a.applicationName(), a.applicationVersion()));
   w.show();
 
   return a.exec();
