@@ -13,7 +13,7 @@
 	<key>CFBundleSignature</key>
 	<string>NKIS</string>
 	<key>CFBundleVersion</key>
-	<string>60</string>
+	<string>63</string>
 	<key>CFBundleExecutable</key>
 	<string>qImgSort</string>
 	<key>CFBundleIdentifier</key>

@@ -47,7 +47,7 @@ void ScannerThread::stop()
 
 void ScannerThread::run()
 {
-  emit logMessage(f_info_.arg(tr("scan started:")) + " " + src_path_);
+  emit logMessage(f_info_.arg(tr("scan started:")) + " " + QDir::toNativeSeparators(src_path_));
 
   stopped_ = false;
   st_.clear();
@@ -103,7 +103,7 @@ void ScannerThread::processFile(const QString& filename)
 
   if (!image_reader.canRead()) {
     res_dir_name = tr("unsupported");
-    emit logMessage(f_warn_.arg(tr("unsupported file:")) + " " + filename);
+    emit logMessage(f_warn_.arg(tr("unsupported file:")) + " " + QDir::toNativeSeparators(filename));
   } else {
     QSize img_res = image_reader.size();
     if (!img_res.isValid()) {
@@ -118,7 +118,7 @@ void ScannerThread::processFile(const QString& filename)
 
     if (img_res.isNull()) {
       res_dir_name = tr("unsupported");
-      emit logMessage(f_warn_.arg(tr("unsupported file:")) + " " + filename);
+      emit logMessage(f_warn_.arg(tr("unsupported file:")) + " " + QDir::toNativeSeparators(filename));
     } else {
       ++st_.files_procesed;
       QString res_dir_mask("%1x%2");
@@ -138,9 +138,9 @@ void ScannerThread::processFile(const QString& filename)
     if (getExtension(dst_filename).toLower() != type_ext.toLower()) {
       if (fix_extensions_) {
         dst_filename = changeExtension(dst_filename, type_ext);
-        emit logMessage(f_info_.arg(tr("incorrect extension fixed:")) + " " + filename + " -> " + type_ext);
+        emit logMessage(f_info_.arg(tr("incorrect extension fixed:")) + " " + QDir::toNativeSeparators(filename) + " -> " + type_ext);
       } else {
-        emit logMessage(f_err_.arg(tr("incorrect extension detected:")) + " " + filename + " -> " + type_ext);
+        emit logMessage(f_err_.arg(tr("incorrect extension detected:")) + " " + QDir::toNativeSeparators(filename) + " -> " + type_ext);
       }
     }
   }
@@ -148,9 +148,9 @@ void ScannerThread::processFile(const QString& filename)
   if (QFile::exists(dst_filename)) dst_filename = genCopyName(dst_filename);
 
   if (delete_processed_) {
-    if (!QFile::rename(filename, dst_filename)) emit logMessage(f_err_.arg(tr("file not moved:")) + " " + filename);
+    if (!QFile::rename(filename, dst_filename)) emit logMessage(f_err_.arg(tr("file not moved:")) + " " + QDir::toNativeSeparators(filename));
   } else {
-    if (!QFile::copy(filename, dst_filename)) emit logMessage(f_err_.arg(tr("file not copied:")) + " " + filename);
+    if (!QFile::copy(filename, dst_filename)) emit logMessage(f_err_.arg(tr("file not copied:")) + " " + QDir::toNativeSeparators(filename));
   }
 
   emit updateStat(st_);

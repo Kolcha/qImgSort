@@ -5,12 +5,12 @@
     <name>MainWindow</name>
     <message>
         <location filename="../src/main_window.ui" line="23"/>
-        <source>Source dir:</source>
+        <source>Source folder:</source>
         <translation>Исходная папка:</translation>
     </message>
     <message>
         <location filename="../src/main_window.ui" line="40"/>
-        <source>Target dir:</source>
+        <source>Target folder:</source>
         <translation>Конечная папка:</translation>
     </message>
     <message>
@@ -35,17 +35,32 @@
     </message>
     <message>
         <location filename="../src/main_window.ui" line="84"/>
-        <location filename="../src/main_window.cpp" line="93"/>
+        <location filename="../src/main_window.cpp" line="112"/>
         <source>GO!</source>
         <translation>Старт!</translation>
     </message>
     <message>
-        <location filename="../src/main_window.cpp" line="77"/>
+        <location filename="../src/main_window.cpp" line="51"/>
+        <source>source path doesn&apos;t exists</source>
+        <translation>исходная папка не существует</translation>
+    </message>
+    <message>
+        <location filename="../src/main_window.cpp" line="55"/>
+        <source>target path doesn&apos;t exists</source>
+        <translation>конечная папка не существует</translation>
+    </message>
+    <message>
+        <location filename="../src/main_window.cpp" line="59"/>
+        <source>source and target are subfolders</source>
+        <translation>исходная и конечная папки являются подпапками</translation>
+    </message>
+    <message>
+        <location filename="../src/main_window.cpp" line="96"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../src/main_window.cpp" line="101"/>
+        <location filename="../src/main_window.cpp" line="120"/>
         <source>Files found: %1, processed: %2</source>
         <translation>Файлов найдено: %1, обработано: %2</translation>
     </message>

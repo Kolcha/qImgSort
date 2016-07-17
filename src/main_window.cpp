@@ -41,6 +41,25 @@ void MainWindow::on_browse_dst_btn_clicked()
 
 void MainWindow::start_scan()
 {
+  QString src_path = QDir::fromNativeSeparators(ui->src_edit->text());
+  QString dst_path = QDir::fromNativeSeparators(ui->dst_edit->text());
+
+  ui->log_view->clear();
+
+  QString err_fmt("<span style=\"color:#DC143C;\">%1</span>");
+  if (!QFile::exists(src_path)) {
+    ui->log_view->append(err_fmt.arg(tr("source path doesn't exists")));
+    return;
+  }
+  if (!QFile::exists(dst_path)) {
+    ui->log_view->append(err_fmt.arg(tr("target path doesn't exists")));
+    return;
+  }
+  if (src_path.indexOf(dst_path) == 0 || dst_path.indexOf(src_path) == 0) {
+    ui->log_view->append(err_fmt.arg(tr("source and target are subfolders")));
+    return;
+  }
+
   ScannerThread* scan_thread = new ScannerThread;
   connect(scan_thread, &ScannerThread::started, this, &MainWindow::scan_started);
   connect(scan_thread, &ScannerThread::started, ui->log_view, &QTextEdit::clear);

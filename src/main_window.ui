@@ -20,7 +20,7 @@
       <item row="0" column="0">
        <widget class="QLabel" name="src_label">
         <property name="text">
-         <string>Source dir:</string>
+         <string>Source folder:</string>
         </property>
        </widget>
       </item>
@@ -37,7 +37,7 @@
       <item row="1" column="0">
        <widget class="QLabel" name="dst_label">
         <property name="text">
-         <string>Target dir:</string>
+         <string>Target folder:</string>
         </property>
        </widget>
       </item>
