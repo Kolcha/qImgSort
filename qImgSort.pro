@@ -11,26 +11,26 @@ TARGET = qImgSort
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-    main_window.cpp \
-    scanner_thread.cpp \
-    name_utils.cpp
+SOURCES += src/main.cpp\
+    src/main_window.cpp \
+    src/scanner_thread.cpp \
+    src/name_utils.cpp
 
 HEADERS  += \
-    main_window.h \
-    scanner_thread.h \
-    name_utils.h
+    src/main_window.h \
+    src/scanner_thread.h \
+    src/name_utils.h
 
 FORMS    += \
-    main_window.ui
+    src/main_window.ui
 
 TRANSLATIONS += \
-    qimgsort_ru.ts
+    lng/qimgsort_ru.ts
 
-win32:RC_FILE = qimgsort.rc
+win32:RC_FILE = res/qimgsort.rc
 macx {
-    ICON = qimgsort.icns
-    QMAKE_INFO_PLIST = qimgsort.plist
+    ICON = res/qimgsort.icns
+    QMAKE_INFO_PLIST = res/qimgsort.plist
 }
 
 RESOURCES += \

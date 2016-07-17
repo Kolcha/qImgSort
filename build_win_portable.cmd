@@ -24,7 +24,7 @@ mkdir "%dst_path%"
 xcopy /y "%variant%\qImgSort.exe" "%dst_path%\"
 
 mkdir "%dst_path%\translations"
-xcopy /y *.qm "%dst_path%\translations\"
+xcopy /y lng\*.qm "%dst_path%\translations\"
 
 mingw32-make distclean
 

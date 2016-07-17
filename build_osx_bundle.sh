@@ -11,7 +11,7 @@ make -j4
 
 # copy resources
 mkdir qImgSort.app/Contents/Resources/translations
-mv *.qm qImgSort.app/Contents/Resources/translations/
+mv lng/*.qm qImgSort.app/Contents/Resources/translations/
 
 # generate qt.conf
 echo "[Paths]" > qImgSort.app/Contents/Resources/qt.conf
