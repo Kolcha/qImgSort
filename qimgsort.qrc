@@ -1,0 +1,11 @@
+<RCC>
+    <qresource prefix="/icons">
+        <file alias="app_icon.png">res/qimgsort.png</file>
+    </qresource>
+    <qresource prefix="/text" lang="en">
+        <file alias="notice.html">res/notice_en.html</file>
+    </qresource>
+    <qresource prefix="/text" lang="ru">
+        <file alias="notice.html">res/notice_ru.html</file>
+    </qresource>
+</RCC>

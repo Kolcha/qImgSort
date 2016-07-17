@@ -32,3 +32,6 @@ macx {
     ICON = qimgsort.icns
     QMAKE_INFO_PLIST = qimgsort.plist
 }
+
+RESOURCES += \
+    qimgsort.qrc

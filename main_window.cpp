@@ -2,6 +2,7 @@
 #include "ui_main_window.h"
 
 #include <QFileDialog>
+#include <QFile>
 
 #include "scanner_thread.h"
 
@@ -10,6 +11,12 @@ MainWindow::MainWindow(QWidget *parent) :
   ui(new Ui::MainWindow)
 {
   ui->setupUi(this);
+
+  QFile n_file(":/text/notice.html");
+  n_file.open(QIODevice::ReadOnly | QIODevice::Text);
+  ui->log_view->setHtml(n_file.readAll());
+  n_file.close();
+
   connect(ui->start_stop_btn, &QPushButton::clicked, this, &MainWindow::start_scan);
 }
 

@@ -43,6 +43,7 @@ int main(int argc, char *argv[])
   }
 
   MainWindow w;
+  w.setWindowIcon(QIcon(":/icons/app_icon.png"));
   w.setWindowTitle(QString("%1 %2").arg(a.applicationName(), a.applicationVersion()));
   w.show();
 
