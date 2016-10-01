@@ -59,6 +59,14 @@ void MainWindow::start_scan()
     ui->log_view->append(err_fmt.arg(tr("source and target are subfolders")));
     return;
   }
+  if (!QDir(src_path).isReadable()) {
+    ui->log_view->append(err_fmt.arg(tr("source path is not readable")));
+    return;
+  }
+  if (!QFileInfo(dst_path).isWritable()) {
+    ui->log_view->append(err_fmt.arg(tr("destination path is not writable")));
+    return;
+  }
 
   ScannerThread* scan_thread = new ScannerThread;
   connect(scan_thread, &ScannerThread::started, this, &MainWindow::scan_started);
@@ -68,8 +76,8 @@ void MainWindow::start_scan()
   connect(scan_thread, &ScannerThread::logMessage, ui->log_view, &QTextEdit::append);
   connect(scan_thread, &ScannerThread::updateStat, this, &MainWindow::display_stat);
 
-  scan_thread->setSourceDir(QDir::fromNativeSeparators(ui->src_edit->text()));
-  scan_thread->setTargetDir(QDir::fromNativeSeparators(ui->dst_edit->text()));
+  scan_thread->setSourceDir(src_path);
+  scan_thread->setTargetDir(dst_path);
 
   scan_thread->setDeleteProcessed(ui->delete_processed_chb->isChecked());
   scan_thread->setFixExtensions(ui->fix_extensions_chb->isChecked());

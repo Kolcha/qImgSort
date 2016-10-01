@@ -67,6 +67,10 @@ void ScannerThread::scanPath(const QString& path)
   if (stopped_) return;
 
   QDir cur_dir(path);
+  if (!cur_dir.isReadable()) {
+    emit logMessage(f_err_.arg(tr("unreadable path:")) + " " + QDir::toNativeSeparators(cur_dir.absolutePath()));
+    return;
+  }
   QFileInfoList items = cur_dir.entryInfoList(QDir::AllEntries | QDir::NoDotAndDotDot | QDir::NoSymLinks | QDir::Hidden);
 
   for (auto& item : items) {
