@@ -35,42 +35,42 @@
     </message>
     <message>
         <location filename="../src/main_window.ui" line="84"/>
-        <location filename="../src/main_window.cpp" line="120"/>
+        <location filename="../src/main_window.cpp" line="138"/>
         <source>GO!</source>
         <translation>Старт!</translation>
     </message>
     <message>
-        <location filename="../src/main_window.cpp" line="51"/>
+        <location filename="../src/main_window.cpp" line="69"/>
         <source>source path doesn&apos;t exists</source>
         <translation>исходная папка не существует</translation>
     </message>
     <message>
-        <location filename="../src/main_window.cpp" line="55"/>
+        <location filename="../src/main_window.cpp" line="73"/>
         <source>target path doesn&apos;t exists</source>
         <translation>конечная папка не существует</translation>
     </message>
     <message>
-        <location filename="../src/main_window.cpp" line="59"/>
+        <location filename="../src/main_window.cpp" line="77"/>
         <source>source and target are subfolders</source>
         <translation>исходная и конечная папки являются подпапками</translation>
     </message>
     <message>
-        <location filename="../src/main_window.cpp" line="63"/>
+        <location filename="../src/main_window.cpp" line="81"/>
         <source>source path is not readable</source>
         <translation>исходная папка недоступна для чтения</translation>
     </message>
     <message>
-        <location filename="../src/main_window.cpp" line="67"/>
+        <location filename="../src/main_window.cpp" line="85"/>
         <source>destination path is not writable</source>
         <translation>конечная папка недоступна для записи</translation>
     </message>
     <message>
-        <location filename="../src/main_window.cpp" line="104"/>
+        <location filename="../src/main_window.cpp" line="122"/>
         <source>Cancel</source>
         <translation>Отмена</translation>
     </message>
     <message>
-        <location filename="../src/main_window.cpp" line="128"/>
+        <location filename="../src/main_window.cpp" line="146"/>
         <source>Files found: %1, processed: %2</source>
         <translation>Файлов найдено: %1, обработано: %2</translation>
     </message>
@@ -78,56 +78,56 @@
 <context>
     <name>ScannerThread</name>
     <message>
-        <location filename="../src/scanner_thread.cpp" line="50"/>
+        <location filename="../src/scanner_thread.cpp" line="68"/>
         <source>scan started:</source>
         <translation>сканирование начато:</translation>
     </message>
     <message>
-        <location filename="../src/scanner_thread.cpp" line="59"/>
+        <location filename="../src/scanner_thread.cpp" line="77"/>
         <source>scan cancelled</source>
         <translation>сканирование прервано</translation>
     </message>
     <message>
-        <location filename="../src/scanner_thread.cpp" line="61"/>
+        <location filename="../src/scanner_thread.cpp" line="79"/>
         <source>scan finished</source>
         <translation>сканирование завершено</translation>
     </message>
     <message>
-        <location filename="../src/scanner_thread.cpp" line="71"/>
+        <location filename="../src/scanner_thread.cpp" line="89"/>
         <source>unreadable path:</source>
         <translation>нечитаемая папка:</translation>
     </message>
     <message>
-        <location filename="../src/scanner_thread.cpp" line="109"/>
-        <location filename="../src/scanner_thread.cpp" line="124"/>
+        <location filename="../src/scanner_thread.cpp" line="127"/>
+        <location filename="../src/scanner_thread.cpp" line="142"/>
         <source>unsupported</source>
         <translation>неподдерживаемые</translation>
     </message>
     <message>
-        <location filename="../src/scanner_thread.cpp" line="110"/>
-        <location filename="../src/scanner_thread.cpp" line="125"/>
+        <location filename="../src/scanner_thread.cpp" line="128"/>
+        <location filename="../src/scanner_thread.cpp" line="143"/>
         <source>unsupported file:</source>
         <translation>неподдерживаемый файл:</translation>
     </message>
     <message>
-        <location filename="../src/scanner_thread.cpp" line="145"/>
+        <location filename="../src/scanner_thread.cpp" line="163"/>
         <source>incorrect extension fixed:</source>
         <oldsource>Incorrect extension fixed:</oldsource>
         <translation>исправлено некорректное расширение файла:</translation>
     </message>
     <message>
-        <location filename="../src/scanner_thread.cpp" line="147"/>
+        <location filename="../src/scanner_thread.cpp" line="165"/>
         <source>incorrect extension detected:</source>
         <oldsource>Incorrect extension detected:</oldsource>
         <translation>некорректное расширение файла:</translation>
     </message>
     <message>
-        <location filename="../src/scanner_thread.cpp" line="155"/>
+        <location filename="../src/scanner_thread.cpp" line="173"/>
         <source>file not moved:</source>
         <translation>ошибка при перемещении:</translation>
     </message>
     <message>
-        <location filename="../src/scanner_thread.cpp" line="157"/>
+        <location filename="../src/scanner_thread.cpp" line="175"/>
         <source>file not copied:</source>
         <translation>ошибка при копировании:</translation>
     </message>
