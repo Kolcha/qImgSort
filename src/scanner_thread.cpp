@@ -30,6 +30,7 @@ ScannerThread::ScannerThread(QObject* parent) : QThread(parent)
   qRegisterMetaType<ScanStat>("ScanStat");
 
   delete_processed_ = true;
+  leave_unsupported_ = false;
   fix_extensions_ = true;
   stopped_ = false;
 
@@ -51,6 +52,11 @@ void ScannerThread::setTargetDir(const QString& path)
 void ScannerThread::setDeleteProcessed(bool enable)
 {
   delete_processed_ = enable;
+}
+
+void ScannerThread::setLeaveUnsupported(bool enable)
+{
+  leave_unsupported_ = enable;
 }
 
 void ScannerThread::setFixExtensions(bool enable)
@@ -121,9 +127,11 @@ void ScannerThread::processFile(const QString& filename)
 
   QImageReader image_reader(&buffer_device);
 
+  bool unsupported_found = false;
   QString res_dir_name;
 
   if (!image_reader.canRead()) {
+    unsupported_found = true;
     res_dir_name = tr("unsupported");
     emit logMessage(f_warn_.arg(tr("unsupported file:")) + " " + QDir::toNativeSeparators(filename));
   } else {
@@ -139,6 +147,7 @@ void ScannerThread::processFile(const QString& filename)
     if (!img_res.isValid()) img_res = image_reader.read().size();
 
     if (img_res.isNull()) {
+      unsupported_found = true;
       res_dir_name = tr("unsupported");
       emit logMessage(f_warn_.arg(tr("unsupported file:")) + " " + QDir::toNativeSeparators(filename));
     } else {
@@ -151,7 +160,8 @@ void ScannerThread::processFile(const QString& filename)
   file_device.close();
 
   QDir dst_dir(dst_path_);
-  if (!dst_dir.exists(res_dir_name)) dst_dir.mkdir(res_dir_name);
+  // don't create "unsupported" folder when "leave unsupported" is enabled
+  if (!dst_dir.exists(res_dir_name) && !(leave_unsupported_ && unsupported_found)) dst_dir.mkdir(res_dir_name);
 
   QString dst_filename = dst_dir.absoluteFilePath(res_dir_name) + "/" + getFileName(filename).toString();
 
@@ -170,7 +180,11 @@ void ScannerThread::processFile(const QString& filename)
   if (QFile::exists(dst_filename)) dst_filename = genCopyName(dst_filename);
 
   if (delete_processed_) {
-    if (!QFile::rename(filename, dst_filename)) emit logMessage(f_err_.arg(tr("file not moved:")) + " " + QDir::toNativeSeparators(filename));
+    if (unsupported_found && leave_unsupported_) {
+      emit logMessage(f_info_.arg(tr("skipping unsupported file:")) + " " + QDir::toNativeSeparators(filename));
+    } else {
+      if (!QFile::rename(filename, dst_filename)) emit logMessage(f_err_.arg(tr("file not moved:")) + " " + QDir::toNativeSeparators(filename));
+    }
   } else {
     if (!QFile::copy(filename, dst_filename)) emit logMessage(f_err_.arg(tr("file not copied:")) + " " + QDir::toNativeSeparators(filename));
   }

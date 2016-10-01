@@ -98,6 +98,7 @@ void MainWindow::start_scan()
   scan_thread->setTargetDir(dst_path);
 
   scan_thread->setDeleteProcessed(ui->delete_processed_chb->isChecked());
+  scan_thread->setLeaveUnsupported(ui->leave_unsupported_chb->isChecked());
   scan_thread->setFixExtensions(ui->fix_extensions_chb->isChecked());
 
   scan_thread->start();

@@ -51,6 +51,7 @@ public slots:
   void setTargetDir(const QString& path);
 
   void setDeleteProcessed(bool enable);
+  void setLeaveUnsupported(bool enable);
   void setFixExtensions(bool enable);
 
   void stop();
@@ -66,6 +67,7 @@ private:
   QString dst_path_;
 
   bool delete_processed_;
+  bool leave_unsupported_;
   bool fix_extensions_;
 
   volatile bool stopped_;

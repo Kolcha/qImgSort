@@ -58,7 +58,7 @@
       <item>
        <widget class="QCheckBox" name="delete_processed_chb">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete processed files from source directory (files will be &lt;span style=&quot; font-weight:600;&quot;&gt;moved&lt;/span&gt; to target directory).&lt;/p&gt;&lt;p&gt;Source directory will be removed if there is no more files in it.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Delete processed files from source directory (files will be &lt;span style=&quot; font-weight:600;&quot;&gt;moved&lt;/span&gt; to target directory).&lt;/p&gt;&lt;p&gt;Source directory will be removed if there is no more files left in it.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string>Delete processed</string>
@@ -66,9 +66,22 @@
        </widget>
       </item>
       <item>
+       <widget class="QCheckBox" name="leave_unsupported_chb">
+        <property name="enabled">
+         <bool>false</bool>
+        </property>
+        <property name="toolTip">
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;If checked, any unsupported files &lt;span style=&quot; font-weight:600;&quot;&gt;will not moved&lt;/span&gt; to target folder.&lt;/p&gt;&lt;p&gt;Otherwise, they will moved to &amp;quot;&lt;span style=&quot; font-style:italic;&quot;&gt;unsupported&lt;/span&gt;&amp;quot; folder in target folder.&lt;/p&gt;&lt;p&gt;Has no effect if &amp;quot;Delete processed&amp;quot; is not checked.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        </property>
+        <property name="text">
+         <string>Leave unsupported</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <widget class="QCheckBox" name="fix_extensions_chb">
         <property name="toolTip">
-         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change file extension to correct if incorrect extension will detected.&lt;/p&gt;&lt;p&gt;Unsupported files will not changed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;Change file extension to correct one if incorrect extension will detected.&lt;/p&gt;&lt;p&gt;Unsupported files will not changed.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
         </property>
         <property name="text">
          <string>Fix extensions</string>
@@ -114,10 +127,28 @@
   <tabstop>dst_edit</tabstop>
   <tabstop>browse_dst_btn</tabstop>
   <tabstop>delete_processed_chb</tabstop>
+  <tabstop>leave_unsupported_chb</tabstop>
   <tabstop>fix_extensions_chb</tabstop>
   <tabstop>start_stop_btn</tabstop>
   <tabstop>log_view</tabstop>
  </tabstops>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>delete_processed_chb</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>leave_unsupported_chb</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>117</x>
+     <y>114</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>221</x>
+     <y>113</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
