@@ -21,7 +21,7 @@
 
 #include <QString>
 
-QStringRef getFileName(const QString& filename);
+QString getFileName(const QString& filename);
 
 QString getExtension(const QString& filename);
 

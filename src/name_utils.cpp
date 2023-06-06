@@ -20,14 +20,14 @@
 
 #include <QFile>
 
-QStringRef getFileName(const QString& filename)
+QString getFileName(const QString& filename)
 {
-  return filename.midRef(filename.lastIndexOf('/') + 1);
+  return filename.mid(filename.lastIndexOf('/') + 1);
 }
 
 int findExtension(const QString& filename)
 {
-  QStringRef name = getFileName(filename);
+  QString name = getFileName(filename);
   int last_dot = name.lastIndexOf('.');
   if (last_dot == -1 || last_dot == 0) return -1;
   if (name.length() - last_dot - 1 > 4) return -1;

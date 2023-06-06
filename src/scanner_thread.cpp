@@ -163,7 +163,7 @@ void ScannerThread::processFile(const QString& filename)
   // don't create "unsupported" folder when "leave unsupported" is enabled
   if (!dst_dir.exists(res_dir_name) && !(leave_unsupported_ && unsupported_found)) dst_dir.mkdir(res_dir_name);
 
-  QString dst_filename = dst_dir.absoluteFilePath(res_dir_name) + "/" + getFileName(filename).toString();
+  QString dst_filename = dst_dir.absoluteFilePath(res_dir_name) + "/" + getFileName(filename);
 
   if (!image_reader.format().isEmpty()) {
     QString type_ext = getTypeExtension(image_reader.format());
